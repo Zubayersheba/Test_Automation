@@ -53,6 +53,6 @@ public class ManagerDashboard {
     public void current_subscription_packag() {
         get("/v2/partners/37662/dashboard?remember_token=vUXmcCyv6MblL0fafVZuRjrQdEVKB6fXn7nyGttEmlEY8hRUSEpHvrGPjM59").
                 then().assertThat()
-                .body("data.geo_informations.lat", (equalTo("23.79534268524198")));
+                .body("data.current_subscription_package.id", (equalTo(4)));
     }
 }
