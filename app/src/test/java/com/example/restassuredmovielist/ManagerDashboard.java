@@ -13,7 +13,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class ManagerDashboard {
     @Before
     public void setBaseURL(){
-        RestAssured.baseURI = "https://api.dev-sheba.xyz";
+        RestAssured.baseURI = "https://api.sheba.xyz";
     }
     @Test
     public void sManager_Dashboard_StatusCode_200()
@@ -51,8 +51,44 @@ public class ManagerDashboard {
 
     @Test
     public void current_subscription_packag() {
-        get("/v2/partners/37662/dashboard?remember_token=vUXmcCyv6MblL0fafVZuRjrQdEVKB6fXn7nyGttEmlEY8hRUSEpHvrGPjM59").
+        get("/v2/partners/17903/dashboard?remember_token=aCwLKJ3zd4qcKdUfD6IqxAKFmEYz9nZDuxfZllQijcxzCNBZxfhpX6DkfH63NHxJgEgiyyACtyJHb3KzV9cxaxWEynqHUMocc0dLIrqr3EaHGzATXq3IhdrMFc8ZlbOPiTwTSnfqFzwHlhllnGk09uzNUaT5bHSOAB6GTkSnooqJInJxG3NF96McopCGsdVxqJWdtjEuPlqn3zmzdT5WIXCNd4tvefCtgXPbOng4O73ufyDGSv3ivfAUWEZtXt4").
                 then().assertThat()
-                .body("data.current_subscription_package.id", (equalTo(4)));
+                .body("data.current_subscription_package.id", (equalTo(2)));
+    }
+    @Test
+    public void current_subscription_packag_billingType() {
+        get("/v2/partners/17903/dashboard?remember_token=aCwLKJ3zd4qcKdUfD6IqxAKFmEYz9nZDuxfZllQijcxzCNBZxfhpX6DkfH63NHxJgEgiyyACtyJHb3KzV9cxaxWEynqHUMocc0dLIrqr3EaHGzATXq3IhdrMFc8ZlbOPiTwTSnfqFzwHlhllnGk09uzNUaT5bHSOAB6GTkSnooqJInJxG3NF96McopCGsdVxqJWdtjEuPlqn3zmzdT5WIXCNd4tvefCtgXPbOng4O73ufyDGSv3ivfAUWEZtXt4").
+                then().assertThat()
+                .body("data.current_subscription_package.billing_type", (equalTo("yearly")));
+    }
+    @Test
+    public void current_subscription_package_rules_loan()
+    {
+        get("/v2/partners/17903/dashboard?remember_token=aCwLKJ3zd4qcKdUfD6IqxAKFmEYz9nZDuxfZllQijcxzCNBZxfhpX6DkfH63NHxJgEgiyyACtyJHb3KzV9cxaxWEynqHUMocc0dLIrqr3EaHGzATXq3IhdrMFc8ZlbOPiTwTSnfqFzwHlhllnGk09uzNUaT5bHSOAB6GTkSnooqJInJxG3NF96McopCGsdVxqJWdtjEuPlqn3zmzdT5WIXCNd4tvefCtgXPbOng4O73ufyDGSv3ivfAUWEZtXt4").
+                then().assertThat().body("data.current_subscription_package.rules.loan",(equalTo(true)));
+    }
+    @Test
+    public void current_subscription_package_rules_dashboardAnalytics()
+    {
+        get("/v2/partners/17903/dashboard?remember_token=aCwLKJ3zd4qcKdUfD6IqxAKFmEYz9nZDuxfZllQijcxzCNBZxfhpX6DkfH63NHxJgEgiyyACtyJHb3KzV9cxaxWEynqHUMocc0dLIrqr3EaHGzATXq3IhdrMFc8ZlbOPiTwTSnfqFzwHlhllnGk09uzNUaT5bHSOAB6GTkSnooqJInJxG3NF96McopCGsdVxqJWdtjEuPlqn3zmzdT5WIXCNd4tvefCtgXPbOng4O73ufyDGSv3ivfAUWEZtXt4").
+                then().assertThat().body("data.current_subscription_package.rules.dashboard_analytics",(equalTo(true)));
+    }
+    @Test
+    public void current_subscription_package_rules_pos_invoice_print()
+    {
+        get("/v2/partners/17903/dashboard?remember_token=aCwLKJ3zd4qcKdUfD6IqxAKFmEYz9nZDuxfZllQijcxzCNBZxfhpX6DkfH63NHxJgEgiyyACtyJHb3KzV9cxaxWEynqHUMocc0dLIrqr3EaHGzATXq3IhdrMFc8ZlbOPiTwTSnfqFzwHlhllnGk09uzNUaT5bHSOAB6GTkSnooqJInJxG3NF96McopCGsdVxqJWdtjEuPlqn3zmzdT5WIXCNd4tvefCtgXPbOng4O73ufyDGSv3ivfAUWEZtXt4").
+                then().assertThat().body("data.current_subscription_package.rules.pos.invoice.print",(equalTo(true)));
+    }
+    @Test
+    public void current_subscription_package_rules_pos_inventory_warranty()
+    {
+        get("/v2/partners/17903/dashboard?remember_token=aCwLKJ3zd4qcKdUfD6IqxAKFmEYz9nZDuxfZllQijcxzCNBZxfhpX6DkfH63NHxJgEgiyyACtyJHb3KzV9cxaxWEynqHUMocc0dLIrqr3EaHGzATXq3IhdrMFc8ZlbOPiTwTSnfqFzwHlhllnGk09uzNUaT5bHSOAB6GTkSnooqJInJxG3NF96McopCGsdVxqJWdtjEuPlqn3zmzdT5WIXCNd4tvefCtgXPbOng4O73ufyDGSv3ivfAUWEZtXt4").
+                then().assertThat().body("data.current_subscription_package.rules.pos.inventory.warranty.add",(equalTo(true)));
+    }
+    @Test
+    public void current_subscription_package_rules_pos_report()
+    {
+        get("/v2/partners/17903/dashboard?remember_token=aCwLKJ3zd4qcKdUfD6IqxAKFmEYz9nZDuxfZllQijcxzCNBZxfhpX6DkfH63NHxJgEgiyyACtyJHb3KzV9cxaxWEynqHUMocc0dLIrqr3EaHGzATXq3IhdrMFc8ZlbOPiTwTSnfqFzwHlhllnGk09uzNUaT5bHSOAB6GTkSnooqJInJxG3NF96McopCGsdVxqJWdtjEuPlqn3zmzdT5WIXCNd4tvefCtgXPbOng4O73ufyDGSv3ivfAUWEZtXt4").
+                then().assertThat().body("data.current_subscription_package.rules.pos.report",(equalTo(false)));
     }
 }
