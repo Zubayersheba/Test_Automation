@@ -91,4 +91,22 @@ public class ManagerDashboard {
         get("/v2/partners/17903/dashboard?remember_token=aCwLKJ3zd4qcKdUfD6IqxAKFmEYz9nZDuxfZllQijcxzCNBZxfhpX6DkfH63NHxJgEgiyyACtyJHb3KzV9cxaxWEynqHUMocc0dLIrqr3EaHGzATXq3IhdrMFc8ZlbOPiTwTSnfqFzwHlhllnGk09uzNUaT5bHSOAB6GTkSnooqJInJxG3NF96McopCGsdVxqJWdtjEuPlqn3zmzdT5WIXCNd4tvefCtgXPbOng4O73ufyDGSv3ivfAUWEZtXt4").
                 then().assertThat().body("data.current_subscription_package.rules.pos.report",(equalTo(false)));
     }
+    @Test
+    public void current_subscription_package_rules_resource_add()
+    {
+        get("/v2/partners/17903/dashboard?remember_token=aCwLKJ3zd4qcKdUfD6IqxAKFmEYz9nZDuxfZllQijcxzCNBZxfhpX6DkfH63NHxJgEgiyyACtyJHb3KzV9cxaxWEynqHUMocc0dLIrqr3EaHGzATXq3IhdrMFc8ZlbOPiTwTSnfqFzwHlhllnGk09uzNUaT5bHSOAB6GTkSnooqJInJxG3NF96McopCGsdVxqJWdtjEuPlqn3zmzdT5WIXCNd4tvefCtgXPbOng4O73ufyDGSv3ivfAUWEZtXt4").
+                then().assertThat().body("data.current_subscription_package.rules.resource.type.add",(equalTo(false)));
+    }
+    @Test
+    public void data_status()
+    {
+        get("/v2/partners/17903/dashboard?remember_token=aCwLKJ3zd4qcKdUfD6IqxAKFmEYz9nZDuxfZllQijcxzCNBZxfhpX6DkfH63NHxJgEgiyyACtyJHb3KzV9cxaxWEynqHUMocc0dLIrqr3EaHGzATXq3IhdrMFc8ZlbOPiTwTSnfqFzwHlhllnGk09uzNUaT5bHSOAB6GTkSnooqJInJxG3NF96McopCGsdVxqJWdtjEuPlqn3zmzdT5WIXCNd4tvefCtgXPbOng4O73ufyDGSv3ivfAUWEZtXt4").
+                then().assertThat().body("data.status",(equalTo("Active")));
+    }
+    @Test
+    public void data_has_qr_code()
+    {
+        get("/v2/partners/17903/dashboard?remember_token=aCwLKJ3zd4qcKdUfD6IqxAKFmEYz9nZDuxfZllQijcxzCNBZxfhpX6DkfH63NHxJgEgiyyACtyJHb3KzV9cxaxWEynqHUMocc0dLIrqr3EaHGzATXq3IhdrMFc8ZlbOPiTwTSnfqFzwHlhllnGk09uzNUaT5bHSOAB6GTkSnooqJInJxG3NF96McopCGsdVxqJWdtjEuPlqn3zmzdT5WIXCNd4tvefCtgXPbOng4O73ufyDGSv3ivfAUWEZtXt4").
+                then().assertThat().body("data.has_qr_code",(equalTo(1)));
+    }
 }
