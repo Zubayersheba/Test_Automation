@@ -110,3 +110,5 @@ public class ManagerDashboard {
                 then().assertThat().body("data.has_qr_code",(equalTo(1)));
     }
 }
+
+
