@@ -9,10 +9,9 @@ import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.when;
 import static org.hamcrest.core.IsEqual.equalTo;
 
-
-public class ManagerDasboardPackage3 {
-    public int partner_id=266290;
-    public String remeber_token="dcLF3MwGUCaPk1LuMNfyNjljydtXD5sNhmZ9MGybzdLHklpvRkaSf8QsfSpA";
+public class ManagerDashboardPackage1 {
+    public int partner_id=1;
+    public String remeber_token="kKxJbSlMiiwAoOG9HN1JELhBuyTUhgavzkmVHIjwQ0ApQjQo20kvOJ8cSGmmsmlW1jfMUCgwayhgPhbIrR6uE1aI5DpSKgJtKXIHwBbGEL8WygzjfGn2sW9azz0dfZLqW1vJw7sNYSt85YEYk2C7xIEKtgkxCqjinZGfGcm6pafzO3YVloXLiCe36O2ZUSnEwKFDCkxwUocJ7S9VhahhWe73D5DzZYqVI1ypzqFg6lv1AIKsOuPtMhol1koZVX9";
 
     @Before
     public void setBaseURL(){
@@ -112,5 +111,4 @@ public class ManagerDasboardPackage3 {
         get("v2/partners/"+partner_id+"/dashboard?remember_token="+remeber_token+"").
                 then().assertThat().body("data.has_qr_code",(equalTo(0)));
     }
-
 }
