@@ -61,7 +61,7 @@ public class ManagerDashboardPackage1 {
     public void current_subscription_packag() {
         get("v2/partners/"+partner_id+"/dashboard?remember_token="+remeber_token+"")
                 .then().assertThat()
-                .body("data.current_subscription_package.id", (equalTo(3)));
+                .body("data.current_subscription_package.id", (equalTo(1)));
     }
     @Test
     public void current_subscription_packag_billingType() {
@@ -79,25 +79,25 @@ public class ManagerDashboardPackage1 {
     public void current_subscription_package_rules_pos_invoice_print()
     {
         get("v2/partners/"+partner_id+"/dashboard?remember_token="+remeber_token+"").
-                then().assertThat().body("data.current_subscription_package.rules.pos.invoice.print",(equalTo(true)));
+                then().assertThat().body("data.current_subscription_package.rules.pos.invoice.print",(equalTo(false)));
     }
     @Test
     public void current_subscription_package_rules_pos_inventory_warranty()
     {
         get("v2/partners/"+partner_id+"/dashboard?remember_token="+remeber_token+"").
-                then().assertThat().body("data.current_subscription_package.rules.pos.inventory.warranty.add",(equalTo(true)));
+                then().assertThat().body("data.current_subscription_package.rules.pos.inventory.warranty.add",(equalTo(false)));
     }
     @Test
     public void current_subscription_package_rules_pos_report()
     {
         get("v2/partners/"+partner_id+"/dashboard?remember_token="+remeber_token+"").
-                then().assertThat().body("data.current_subscription_package.rules.pos.report",(equalTo(true)));
+                then().assertThat().body("data.current_subscription_package.rules.pos.report",(equalTo(false)));
     }
     @Test
     public void current_subscription_package_rules_resource_add()
     {
         get("v2/partners/"+partner_id+"/dashboard?remember_token="+remeber_token+"").
-                then().assertThat().body("data.current_subscription_package.rules.resource.type.add",(equalTo(true)));
+                then().assertThat().body("data.current_subscription_package.rules.resource.type.add",(equalTo(false)));
     }
     @Test
     public void data_status()
