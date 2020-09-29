@@ -24,8 +24,17 @@ public class ManagerDasboardPackage3 {
                 get("v2/partners/"+partner_id+"/dashboard?remember_token="+remeber_token+"")
                 .then().statusCode(200).log().all();
     }
+
     @Test
     public void sManager_Dashboard_message_code_200()
+    {
+        when().
+                get("v2/partners/"+partner_id+"/dashboard?remember_token="+remeber_token+"")
+                .then().body("code",equalTo(200))
+                .body("message", equalTo("Successful"));
+    }
+    @Test
+    public void sManager_Dashboard_message_code_404()
     {
         when().
                 get("v2/partners/"+partner_id+"/dashboard?remember_token="+remeber_token+"")
