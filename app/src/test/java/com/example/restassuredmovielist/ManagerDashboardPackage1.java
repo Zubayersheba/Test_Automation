@@ -46,7 +46,7 @@ public class ManagerDashboardPackage1 {
     {
         when().
                 get("v2/partners/"+partner_id+"/dashboard?remember_token="+remeber_token+"")
-                .then().body("data.name",equalTo("showntelecom "));
+                .then().body("data.name",equalTo("BD Transport"));
 
     }
     @Test
